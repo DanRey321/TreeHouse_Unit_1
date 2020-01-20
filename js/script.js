@@ -3,8 +3,7 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 var quoteTemp;
-var quotePhrase;
-var message = "";
+
 
 // For assistance: 
   // Check the "Project Resources" section of the project instructions
@@ -42,7 +41,8 @@ var quotes = [
   {
     quote: 'Waka waka waka waka waka waka waka waka...',
     source: 'Pac-man',
-    year: '1980'
+    year: '1980',
+    tags: 'Funny'
   }
 
 ];
@@ -68,20 +68,17 @@ function getRandomQuote(){
 
 }
 
-
 getRandomQuote();
 
 /***
  * `printQuote` function
 ***/
-/*
-<p class="quote"> A random quote </p>
-<p class="source"> quote source </p>
-*/
 
+//printQuote will arrange the quote along with other data in the proper format for html.
 function printQuote(){
-  var randQuote = getRandomQuote();
+  var randQuote = getRandomQuote();   //Call getRandomQuote 
   var html = '';
+  
   html += '<p class="quote"> '  + randQuote.quote +   '</p>';
   html+= '<p class="source"> ' + randQuote.source ;
 
@@ -89,16 +86,19 @@ function printQuote(){
     html += '<span class="citation"> ' + randQuote.citation + '</span>';
   }
   if(randQuote.year){
-    html += '<span class="year"> ' + randQuote.year + '</span>'
+    html += '<span class="year"> ' + randQuote.year + '</span>';
   }
+  if(randQuote.tags){
+    html += '<span class="tags"> ' + randQuote.tags + '</span>';
+  }
+
   html += '</p>';
 
   document.getElementById('quote-box').innerHTML = html; 
 
-
-  return html;
-
 }
+
+
 
 /***
  * click event listener for the print quote button
