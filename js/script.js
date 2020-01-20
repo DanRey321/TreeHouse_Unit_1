@@ -45,7 +45,7 @@ var quotes = [
 ];
 
 /* 
-* Generates random number to return random quote 
+* Generates random number to return random quote from list above
 */
 function getRandomQuote(){
   var randomNumber = Math.floor(Math.random() * quotes.length);
