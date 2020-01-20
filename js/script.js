@@ -1,18 +1,15 @@
 /******************************************
+Daniel Reyes
+1/20/2019
 Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
+Project 1 - A Random Quote Generator
 ******************************************/
-var quoteTemp;
 
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
-
+/*
+* Array of Objects
+* Holds 5 different quotes along with source, citation, year, and tag...
+*/
 var quotes = [
   {
     quote: "Veni, Vidi, Vici",
@@ -47,41 +44,29 @@ var quotes = [
 
 ];
 
-/* Test Case for quotes
-for(var i = 0; i < quotes.length; i += 1){
-  quoteTemp = quotes[i];        //Entire object
-  quoteTemp = quotes[i].quote;  //Just the quote
-  console.log(quoteTemp);
-}
+/* 
+* Generates random number to return random quote 
 */
-
-
-/***
- * `getRandomQuote` function
-***/
-
 function getRandomQuote(){
   var randomNumber = Math.floor(Math.random() * quotes.length);
-  console.log(randomNumber);
-  console.log(quotes[randomNumber].quote);
+  //console.log(randomNumber);
+  //console.log(quotes[randomNumber].quote); //Test cases
   return quotes[randomNumber];
 
 }
 
-getRandomQuote();
 
-/***
- * `printQuote` function
-***/
-
-//printQuote will arrange the quote along with other data in the proper format for html.
+/*
+ * printQuote will arrange the quote along with other data in the proper format for html.
+ */ 
 function printQuote(){
   var randQuote = getRandomQuote();   //Call getRandomQuote 
   var html = '';
   
-  html += '<p class="quote"> '  + randQuote.quote +   '</p>';
-  html+= '<p class="source"> ' + randQuote.source ;
+  html += '<p class="quote"> '  + randQuote.quote + '</p>';
+  html+= '<p class="source"> ' + randQuote.source;
 
+  //If statements determine if quotes have additional information and includes them if needed
   if(randQuote.citation){
     html += '<span class="citation"> ' + randQuote.citation + '</span>';
   }
@@ -97,12 +82,5 @@ function printQuote(){
   document.getElementById('quote-box').innerHTML = html; 
 
 }
-
-
-
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
